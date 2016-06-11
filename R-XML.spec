@@ -4,20 +4,30 @@
 #
 Name     : R-XML
 Version  : 3.98
-Release  : 15
-URL      : http://cran.r-project.org/src/contrib/XML_3.98-1.1.tar.gz
-Source0  : http://cran.r-project.org/src/contrib/XML_3.98-1.1.tar.gz
-Summary  : Tools for parsing and generating XML within R and S-Plus.
+Release  : 16
+URL      : http://cran.r-project.org/src/contrib/XML_3.98-1.4.tar.gz
+Source0  : http://cran.r-project.org/src/contrib/XML_3.98-1.4.tar.gz
+Summary  : Tools for Parsing and Generating XML Within R and S-Plus
 Group    : Development/Tools
-License  : GPL-2.0
+License  : BSD-2-Clause GPL-2.0
+Requires: R-XML-lib
 BuildRequires : clr-R-helpers
 BuildRequires : libxml2-dev
+BuildRequires : xz-dev
 BuildRequires : zlib-dev
 
 %description
 The Packages/ directory has some package source tar.gz files.
 See index.html for a description of the package and the installation
 procedures.
+
+%package lib
+Summary: lib components for the R-XML package.
+Group: Libraries
+
+%description lib
+lib components for the R-XML package.
+
 
 %prep
 %setup -q -c -n XML
@@ -27,8 +37,10 @@ procedures.
 %install
 rm -rf %{buildroot}
 export LANG=C
-export CFLAGS="$CFLAGS -O3 -flto -ffunction-sections -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -flto -ffunction-sections -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
@@ -36,17 +48,20 @@ mkdir -p %{buildroot}/usr/lib64/R/library
 R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library XML
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=intel.com,localhost
+export no_proxy=localhost
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library XML
 
 
 %files
 %defattr(-,root,root,-)
+/usr/lib64/R/library/XML/COPYRIGHTS
 /usr/lib64/R/library/XML/DESCRIPTION
 /usr/lib64/R/library/XML/INDEX
+/usr/lib64/R/library/XML/LICENSE
 /usr/lib64/R/library/XML/Meta/Rd.rds
 /usr/lib64/R/library/XML/Meta/hsearch.rds
 /usr/lib64/R/library/XML/Meta/links.rds
@@ -259,9 +274,12 @@ R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/lib
 /usr/lib64/R/library/XML/help/paths.rds
 /usr/lib64/R/library/XML/html/00Index.html
 /usr/lib64/R/library/XML/html/R.css
-/usr/lib64/R/library/XML/libs/XML.so
 /usr/lib64/R/library/XML/libs/symbols.rds
 /usr/lib64/R/library/XML/scripts/RSXML.bsh
 /usr/lib64/R/library/XML/scripts/RSXML.bsh.in
 /usr/lib64/R/library/XML/scripts/RSXML.csh
 /usr/lib64/R/library/XML/scripts/RSXML.csh.in
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/R/library/XML/libs/XML.so
