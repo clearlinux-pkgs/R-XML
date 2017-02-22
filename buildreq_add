@@ -3,3 +3,4 @@
 zlib-dev
 libxml2-dev
 xz-dev
+xmlsec1-dev
