@@ -4,7 +4,7 @@
 #
 Name     : R-XML
 Version  : 3.98.1.5
-Release  : 22
+Release  : 23
 URL      : http://cran.r-project.org/src/contrib/XML_3.98-1.5.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/XML_3.98-1.5.tar.gz
 Summary  : Tools for Parsing and Generating XML Within R and S-Plus
@@ -35,11 +35,11 @@ lib components for the R-XML package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1489101455
+export SOURCE_DATE_EPOCH=1489130265
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1489101455
+export SOURCE_DATE_EPOCH=1489130265
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
