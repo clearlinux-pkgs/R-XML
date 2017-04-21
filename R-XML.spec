@@ -4,7 +4,7 @@
 #
 Name     : R-XML
 Version  : 3.98.1.6
-Release  : 25
+Release  : 26
 URL      : http://cran.r-project.org/src/contrib/XML_3.98-1.6.tar.gz
 Source0  : http://cran.r-project.org/src/contrib/XML_3.98-1.6.tar.gz
 Summary  : Tools for Parsing and Generating XML Within R and S-Plus
@@ -34,12 +34,15 @@ lib components for the R-XML package.
 %setup -q -c -n XML
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1490882791
+export SOURCE_DATE_EPOCH=1492798727
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1490882791
+export SOURCE_DATE_EPOCH=1492798727
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -55,7 +58,7 @@ R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library XML
 
@@ -67,6 +70,7 @@ R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/lib
 /usr/lib64/R/library/XML/INDEX
 /usr/lib64/R/library/XML/LICENSE
 /usr/lib64/R/library/XML/Meta/Rd.rds
+/usr/lib64/R/library/XML/Meta/features.rds
 /usr/lib64/R/library/XML/Meta/hsearch.rds
 /usr/lib64/R/library/XML/Meta/links.rds
 /usr/lib64/R/library/XML/Meta/nsInfo.rds
