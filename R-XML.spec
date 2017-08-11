@@ -4,7 +4,7 @@
 #
 Name     : R-XML
 Version  : 3.98.1.9
-Release  : 34
+Release  : 35
 URL      : https://cran.r-project.org/src/contrib/XML_3.98-1.9.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/XML_3.98-1.9.tar.gz
 Summary  : Tools for Parsing and Generating XML Within R and S-Plus
@@ -18,9 +18,9 @@ BuildRequires : xz-dev
 BuildRequires : zlib-dev
 
 %description
-The Packages/ directory has some package source tar.gz files.
-See index.html for a description of the package and the installation
-procedures.
+creating XML (and HTML) documents (including DTDs), both local
+        and accessible via HTTP or FTP.  Also offers access to an
+        'XPath' "interpreter".
 
 %package lib
 Summary: lib components for the R-XML package.
@@ -38,11 +38,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1497891075
+export SOURCE_DATE_EPOCH=1502423996
 
 %install
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1497891075
+export SOURCE_DATE_EPOCH=1502423996
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -60,11 +60,6 @@ echo "FFLAGS = $FFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 echo "CXXFLAGS = $CXXFLAGS -march=haswell -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library XML
 for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx2 ; mv $i.avx2 ~/.stash/; done
-echo "CFLAGS = $CFLAGS -march=skylake-avx512 -ftree-vectorize " > ~/.R/Makevars
-echo "FFLAGS = $FFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
-echo "CXXFLAGS = $CXXFLAGS -march=skylake-avx512 -ftree-vectorize " >> ~/.R/Makevars
-R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library XML
-for i in `find %{buildroot}/usr/lib64/R/ -name "*.so"`; do mv $i $i.avx512 ; mv $i.avx512 ~/.stash/; done
 echo "CFLAGS = $CFLAGS -ftree-vectorize " > ~/.R/Makevars
 echo "FFLAGS = $FFLAGS -ftree-vectorize " >> ~/.R/Makevars
 echo "CXXFLAGS = $CXXFLAGS -ftree-vectorize " >> ~/.R/Makevars
@@ -310,4 +305,3 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %defattr(-,root,root,-)
 /usr/lib64/R/library/XML/libs/XML.so
 /usr/lib64/R/library/XML/libs/XML.so.avx2
-/usr/lib64/R/library/XML/libs/XML.so.avx512
