@@ -4,7 +4,7 @@
 #
 Name     : R-XML
 Version  : 3.98.1.19
-Release  : 63
+Release  : 64
 URL      : https://cran.r-project.org/src/contrib/XML_3.98-1.19.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/XML_3.98-1.19.tar.gz
 Summary  : Tools for Parsing and Generating XML Within R and S-Plus
@@ -39,10 +39,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551930083
+export SOURCE_DATE_EPOCH=1552804468
 
 %install
-export SOURCE_DATE_EPOCH=1551930083
+export SOURCE_DATE_EPOCH=1552804468
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -78,8 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library XML|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  XML || :
 
 
 %files
@@ -301,7 +300,6 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/XML/help/paths.rds
 /usr/lib64/R/library/XML/html/00Index.html
 /usr/lib64/R/library/XML/html/R.css
-/usr/lib64/R/library/XML/libs/symbols.rds
 /usr/lib64/R/library/XML/scripts/RSXML.bsh
 /usr/lib64/R/library/XML/scripts/RSXML.bsh.in
 /usr/lib64/R/library/XML/scripts/RSXML.csh
@@ -310,5 +308,3 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/XML/libs/XML.so
-/usr/lib64/R/library/XML/libs/XML.so.avx2
-/usr/lib64/R/library/XML/libs/XML.so.avx512
