@@ -4,7 +4,7 @@
 #
 Name     : R-XML
 Version  : 3.99.0.3
-Release  : 77
+Release  : 78
 URL      : https://cran.r-project.org/src/contrib/XML_3.99-0.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/XML_3.99-0.3.tar.gz
 Summary  : Tools for Parsing and Generating XML Within R and S-Plus
@@ -39,10 +39,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589743859
+export SOURCE_DATE_EPOCH=1589748138
 
 %install
-export SOURCE_DATE_EPOCH=1589743859
+export SOURCE_DATE_EPOCH=1589748138
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
