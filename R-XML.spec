@@ -4,7 +4,7 @@
 #
 Name     : R-XML
 Version  : 3.99.0.3
-Release  : 76
+Release  : 77
 URL      : https://cran.r-project.org/src/contrib/XML_3.99-0.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/XML_3.99-0.3.tar.gz
 Summary  : Tools for Parsing and Generating XML Within R and S-Plus
@@ -18,10 +18,9 @@ BuildRequires : xz-dev
 BuildRequires : zlib-dev
 
 %description
-dataFrameEvent.R     example of closure for reading a data frame via the event based parser.
-foo.dtd              DTD used for testing the DTD parsing facilities (getDTD()).
-job.xml              example XML file taken from the libxml-1.7.3 examples.
-enhancedDataFrame.R  version of the event-driven data frame reader with more error checking.
+creating XML (and HTML) documents (including DTDs), both local
+        and accessible via HTTP or FTP.  Also offers access to an
+        'XPath' "interpreter".
 
 %package lib
 Summary: lib components for the R-XML package.
@@ -33,21 +32,22 @@ lib components for the R-XML package.
 
 %prep
 %setup -q -c -n XML
+cd %{_builddir}/XML
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579630182
+export SOURCE_DATE_EPOCH=1589743859
 
 %install
-export SOURCE_DATE_EPOCH=1579630182
+export SOURCE_DATE_EPOCH=1589743859
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -307,3 +307,4 @@ R CMD check --no-manual --no-examples --no-codoc XML || :
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/XML/libs/XML.so
+/usr/lib64/R/library/XML/libs/XML.so.avx2
