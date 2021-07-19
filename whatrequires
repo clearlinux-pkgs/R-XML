@@ -1,8 +1,8 @@
 # This file contains recursive sources that require this package
 R-BoolNet
-R-Ecfun
 R-Luminescence
 R-RNeXML
+R-htmlTable
 R-partykit
 R-pmml
 R-rentrez
