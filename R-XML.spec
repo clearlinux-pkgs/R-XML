@@ -4,7 +4,7 @@
 #
 Name     : R-XML
 Version  : 3.99.0.13
-Release  : 109
+Release  : 110
 URL      : https://cran.r-project.org/src/contrib/XML_3.99-0.13.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/XML_3.99-0.13.tar.gz
 Summary  : Tools for Parsing and Generating XML Within R and S-Plus
