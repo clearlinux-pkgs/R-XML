@@ -7,7 +7,7 @@
 #
 Name     : R-XML
 Version  : 3.99.0.18
-Release  : 121
+Release  : 122
 URL      : https://ftp.osuosl.org/pub/cran/src/contrib/XML_3.99-0.18.tar.gz
 Source0  : https://ftp.osuosl.org/pub/cran/src/contrib/XML_3.99-0.18.tar.gz
 Summary  : Tools for Parsing and Generating XML Within R and S-Plus
